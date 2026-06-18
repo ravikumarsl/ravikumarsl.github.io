@@ -9,6 +9,7 @@
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%232563eb'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='600' fill='white'>RL</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
     rel="stylesheet" />
@@ -127,20 +128,22 @@
 
     /* Avatar as SVG icon */
     .avatar-wrap {
-      width: 68px;
-      height: 68px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       overflow: hidden;
-      margin-bottom: 16px;
-      flex-shrink: 0;
+      margin: 0 auto 18px auto;
+      /* centers avatar */
+      border: 3px solid var(--border);
       box-shadow: 0 4px 18px rgba(37, 99, 235, 0.28);
-      border: 2.5px solid var(--border);
-      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
     }
 
-    .avatar-wrap svg {
+    .avatar-wrap img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
     }
 
     .sidebar-name {
@@ -412,6 +415,37 @@
     .main {
       padding: 60px 56px;
       max-width: 900px;
+    }
+
+    /* ══ TOP NAVIGATION ══ */
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 50px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+    }
+
+    .top-nav-link {
+      text-decoration: none;
+      color: var(--subtle);
+      font-size: 14px;
+      font-weight: 500;
+      transition: all var(--transition);
+    }
+
+    .top-nav-link:hover {
+      color: var(--accent);
+    }
+
+    .top-nav .theme-toggle {
+      margin-left: auto;
     }
 
     /* Hero */
@@ -1099,6 +1133,62 @@
         border-top: 1px solid var(--border);
       }
     }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: var(--body);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      transition: all var(--transition);
+    }
+
+    .social-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-bg);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .social-icons a {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      color: var(--subtle);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .social-icons a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-bg);
+      transform: translateY(-2px);
+    }
+
+    .social-icons i {
+      font-size: 16px;
+    }
   </style>
 </head>
 
@@ -1110,22 +1200,7 @@
       <div>
         <!-- SVG Avatar Icon instead of "RL" text -->
         <div class="avatar-wrap">
-          <svg viewBox="0 0 68 68" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#2563eb" />
-                <stop offset="100%" stop-color="#7c3aed" />
-              </linearGradient>
-            </defs>
-            <rect width="68" height="68" fill="url(#avatarGrad)" />
-            <!-- Stylized person icon -->
-            <circle cx="34" cy="24" r="10" fill="rgba(255,255,255,0.92)" />
-            <ellipse cx="34" cy="52" rx="16" ry="12" fill="rgba(255,255,255,0.92)" />
-            <!-- QA checkmark badge -->
-            <circle cx="50" cy="18" r="8" fill="#10b981" />
-            <polyline points="46,18 49,21 54,14" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
+          <img src="./profile.png" alt="Ravikumar">
         </div>
         <div class="sidebar-name">Ravikumar Lubdhi</div>
         <div class="sidebar-role">QA Automation Engineer</div>
@@ -1149,11 +1224,11 @@
           <span class="skill-tag">Selenium</span>
           <span class="skill-tag">TestNG</span>
           <span class="skill-tag">Playwright</span>
-          <span class="skill-tag">Cucumber</span>
           <span class="skill-tag">Rest Assured</span>
           <span class="skill-tag">JMeter</span>
+          <span class="skill-tag">Burp Suite</span>
           <span class="skill-tag">Jenkins</span>
-          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Git</span>
           <span class="skill-tag">SQL</span>
         </div>
       </div>
@@ -1175,61 +1250,44 @@
         </a>
       </div>
 
-      <!-- Navigation Links -->
-      <nav class="sidebar-nav">
-        <a href="#about" class="nav-link" data-section="about">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-          About
-        </a>
-        <a href="#projects" class="nav-link" data-section="projects">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="3" width="20" height="14" rx="2" />
-            <line x1="8" y1="21" x2="16" y2="21" />
-            <line x1="12" y1="17" x2="12" y2="21" />
-          </svg>
-          Projects
-        </a>
-        <a href="#blogs" class="nav-link" data-section="blogs">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 20h9" />
-            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-          </svg>
-          Blogs
-        </a>
-        <a href="#docs" class="nav-link" data-section="docs">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-          </svg>
-          Docs
+      <div class="social-icons">
+        <a href="https://github.com/ravikumarsl" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
         </a>
 
-        <!-- Dark/Light Mode Toggle -->
-        <div class="theme-toggle" id="themeToggle" style="margin-top: 10px;">
-          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
+        <a href="https://www.linkedin.com/in/ravikumar-lubdhi/" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+
+        <a href="https://medium.com/#" target="_blank" aria-label="Medium">
+          <i class="fab fa-medium-m"></i>
+        </a>
+
+        <a href="mailto:ravikumar.lubdhi@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <header class="top-nav">
+        <a href="#about" class="top-nav-link">About</a>
+        <a href="#projects" class="top-nav-link">Projects</a>
+        <a href="#blogs" class="top-nav-link">Blogs</a>
+        <a href="#docs" class="top-nav-link">Docs</a>
+        <a href="#contact" class="top-nav-link">Contact</a>
+
+        <div class="theme-toggle" id="themeToggle">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"></svg>
           <span id="themeLabel">Light</span>
           <div class="toggle-track">
             <div class="toggle-thumb"></div>
           </div>
         </div>
-      </nav>
-    </aside>
-
-    <!-- MAIN -->
-    <main class="main">
+      </header>
 
       <!-- Hero -->
       <section class="hero">
@@ -1500,6 +1558,23 @@
             </div>
           </a>
         </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <span class="section-line"></span>
+        </div>
+
+        <p>
+          Interested in QA Automation, Test Architecture, ERP Testing, or freelance consulting?
+        </p>
+
+        <br>
+
+        <a href="mailto:ravikumar.lubdhi@gmail.com" class="btn btn-primary">
+          Get In Touch
+        </a>
       </section>
 
       <!-- Footer -->
